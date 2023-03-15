@@ -1,34 +1,29 @@
-include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
-#include <string.h>
+#include "main.h"
 /**
- * main - program that prints its name, followed by a new line
- * @argc: argument that counts argument input
- * @argv: argument that stores the strings in an array of char* (strings)
+ * main - Entry Point
+ * @argc: arguments
+ * @argv: array pointing to arguments
  * Return: 0
  */
 int main(int argc, char *argv[])
 {
-	int sum, val, i;
+	int i, sum = 0;
 
-	sum = 0;
 	if (argc < 1)
-		printf("%d\n", 0);
-	while (argc-- && argc > 0)
-	{
-		for (i = 0; argv[argc][i] != '\0'; i++)
-		{
+		return (0);
 
-			if (!(isdigit(argv[argc][i])))
-			{
-				printf("Error\n");
-				return (1);
-			}
+	for (i = 1; i < argc; i++)
+	{
+		if (!atoi(argv[i]))
+		{
+			printf("%s\n", "Error");
+			return (1);
 		}
-		val = atoi(argv[argc]);
-		sum += val;
+		sum += atoi(argv[i]);
 	}
 	printf("%d\n", sum);
+
 	return (0);
 }
