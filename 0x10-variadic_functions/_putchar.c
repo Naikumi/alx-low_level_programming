@@ -1,13 +1,14 @@
-#include <unistd.h>
+int _putchar(char c);
 
 /**
- * _putchar - writes the character c to stdout
- * @c: The character to print
+ * struct funckey - a key for picking functions to use for printing
+ * in 3-print_all.c
  *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * @f: function to use for printing
+ * @spec: character specifier
  */
-int _putchar(char c)
+typedef struct funckey
 {
-	return (write(1, &c, 1));
-}
+	void (*f)(va_list);
+	char spec;
+} funckey;
