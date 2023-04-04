@@ -1,10 +1,11 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include "lists.h"
 /**
- * add_nodeint - adds new nodes to the list
- * @head: current place in the linked list
- * @n: int add to the list
+ * add_nodeint_end - adds new node to the end of the list
+ * @head: current place in the list
+ * @n: int to add to the list
  *
  * Return: pointer to the current position in list
  */
@@ -14,7 +15,7 @@ listint_t *add_nodeint_end(listint_t **head, const int n)
 	{
 		if (new_node == NULL)
 			return (NULL);
-	}
+}
 	new_node->n = n;
 	new_node->next = NULL;
 	if (*head == NULL)
