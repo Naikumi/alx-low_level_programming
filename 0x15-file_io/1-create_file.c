@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include "main.h"
 /**
@@ -10,20 +11,20 @@
  */
 int create_file(const char *filename, char *text_content)
 {
-	int fp, i, err;
+	int fp, i, num_write;
 
-	fp = i = err = 0;
+	fp = i = num_write = 0;
 	if (!filename)
 		return (-1);
+	fp = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);
+	if (fp == -1)
+		return (-1);
 
-	fp = open(filename, O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR);
-		if (fp < 0)
-			return (-1);
 	while (text_content && text_content[i])
 		i++;
 
-	err = write(fp, text_content, i);
-	if (err < 0)
+	num_write = write(fp, text_content, i);
+	if (num_write < 0)
 		return (-1);
 	close(fp);
 	return (i);
