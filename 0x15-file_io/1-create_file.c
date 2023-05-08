@@ -4,13 +4,13 @@
 #include <string.h>
 /**
  * create_file - creates a file
- * @filename: name of the file to create
+ * @filename: name of the file
  * @text_content: contents of the created file
- * Return: Always 1 on success, -1 on failure
+ * Return: 1 on success or -1 on failure
  */
 int create_file(const char *filename, char *text_content)
 {
-	int fp, j, wr_num;
+	int fp, i, wr_num;
 
 	if (filename == NULL)
 		return (-1);
@@ -22,9 +22,9 @@ int create_file(const char *filename, char *text_content)
 		close(fp);
 		return (1);
 	}
-	for (j = 0; text_content[j]; j++)
+	for (i = 0; text_content[i]; i++)
 		;
-	wr_num = write(fp, text_content, j);
+	wr_num = write(fp, text_content, i);
 	if (close(fp) == -1)
 		return (-1);
 	return (wr_num == -1 ? -1 : 1);
